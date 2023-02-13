@@ -1,10 +1,19 @@
-import express, { Express } from "express";
-const app: Express = express();
+import express, { Application, Request, Response } from "express";
 
-import indexRouter from "./routes/index";
-app.use(express.json());
+class App {
+  public app: Application;
 
-app.use("/", indexRouter);
+  constructor() {
+    this.app = express();
+    this.routes();
+  }
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`server run at PORT ${PORT}`));
+  routes(): void {
+    this.app.get("/", (req, res) => {
+      res.send("express class ni boss");
+    });
+  }
+}
+
+const app = new App().app;
+app.listen(3000, () => console.log("server run at port 3000"));
