@@ -1,16 +1,16 @@
 import { Router } from "express";
+import UserController from "../controllers/UserController.js";
 class UserRoutes {
     constructor() {
         this.router = Router();
         this.routes();
     }
     routes() {
-        this.router.get("/", (req, res) => {
-            res.sendStatus(200);
-        });
-        this.router.post("/", (req, res) => {
-            res.json(req.body);
-        });
+        this.router.get("/", UserController.index);
+        this.router.get("/:id", UserController.show);
+        this.router.post("/", UserController.create);
+        this.router.delete("/:id", UserController.delete);
+        this.router.put("/:id", UserController.update);
     }
 }
 export default new UserRoutes().router;

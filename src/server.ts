@@ -6,7 +6,6 @@ import cors from "cors";
 
 // Router
 import UserRoutes from "./routes/UserRoutes.js";
-import productRouter from "./routes/Products.js";
 
 class App {
   public app: Application;
@@ -31,7 +30,6 @@ class App {
     });
 
     this.app.use("/users", UserRoutes);
-    this.app.use("/products", productRouter);
   }
 }
 

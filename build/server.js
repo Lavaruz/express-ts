@@ -5,7 +5,6 @@ import compression from "compression";
 import cors from "cors";
 // Router
 import UserRoutes from "./routes/UserRoutes.js";
-import productRouter from "./routes/Products.js";
 class App {
     constructor() {
         this.app = express();
@@ -24,7 +23,6 @@ class App {
             res.send("express class ni boss");
         });
         this.app.use("/users", UserRoutes);
-        this.app.use("/products", productRouter);
     }
 }
 const app = new App().app;
